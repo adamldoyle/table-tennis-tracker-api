@@ -1,5 +1,5 @@
-import AWS from "./aws-sdk";
-import config from "../config";
+import AWS from './aws-sdk';
+import config from '../config';
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
@@ -7,6 +7,6 @@ export function call(action, params) {
   // Parameterize table names with stage name
   return dynamoDb[action]({
     ...params,
-    TableName: `${config.resourcesStage}-t3-${params.TableName}`
+    TableName: `${config.resourcesStage}-t3-${params.TableName}`,
   }).promise();
 }
